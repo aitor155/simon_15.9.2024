@@ -1,7 +1,8 @@
 import {useState, useEffect, useRef} from 'react'
+import emptyPotion from '../assets/images/emptyPotion.png';
 import useSound from 'use-sound';
 import simon from '../assets/sounds/simon.mp3';
-import './App.css'
+import './App.css';
 
 export default function App (){
 
@@ -14,22 +15,26 @@ export default function App (){
     {
       color:'#FAF303',
       ref: yellowRef,
-      sound: 'one'
+      sound: 'one',
+      imgSrc: emptyPotion,
     },
     {
       color:'#030afa',
       ref: blueRef,
-      sound: 'two'
+      sound: 'two',
+      imgSrc: emptyPotion,
     },
     {
       color:'#FA0E03',
       ref: redRef,
-      sound: 'three'
+      sound: 'three',
+      imgSrc: emptyPotion,
     },
     {
       color:'#0AFA03',
       ref: greenRef,
-      sound: 'four'
+      sound: 'four',
+      imgSrc: emptyPotion,
     },
   ];
 
@@ -151,19 +156,21 @@ export default function App (){
     <>
       {isGameOn ? (
         <>
-          <div className="header">
-            <h1>Turn {turn}</h1>
-          </div>
           <div className="center-container">
+            <div className="header">
+              <h1>Turn {turn}</h1>
+            </div>
+
             <div className="container">
               {colors.map((item, index) => (
                 <div
                   key={index}
                   ref={item.ref}
-                  className={`pad pad-${index}`}
-                  style={{ backgroundColor: `${item.color}`, opacity: 0.6 }}
+                  className="potion"
                   onClick={() => handleClick(index)}
-                ></div>
+                >
+                  <img src={item.imgSrc} alt={`Potion ${index}`} />
+                </div>
               ))}
             </div>
           </div>
@@ -171,13 +178,14 @@ export default function App (){
       ) : (
         <>
           <div className="header">
-            <h1>SUPER SIMON</h1>
+            <h1>SIMON'S POTIONS</h1>
           </div>
           <button onClick={initGame}>START</button>
         </>
       )}
     </>
   );
+  
   
 
 
