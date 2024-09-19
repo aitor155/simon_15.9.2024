@@ -1,9 +1,9 @@
 import {useState, useEffect, useRef} from 'react'
 import useSound from 'use-sound';
-import simon from './assets/sounds/sprite.mp3';
+import simon from '../assets/sounds/simon.mp3';
 import './App.css'
 
-function App (){
+export default function App (){
 
   const blueRef = useRef(null);
   const yellowRef = useRef(null);
@@ -136,7 +136,7 @@ function App (){
         setTimeout(() => {
           play({id:colors[item].sound})
           colors[item].ref.current.style.opacity = (1);
-          seetTimeout(() => {
+          setTimeout(() => {
             colors[item].ref.current.style.opacity = (0.5);
           }, speed / 2)
         }, speed * index)
@@ -179,7 +179,7 @@ function App (){
         <div className='header'>
           <h1>SUPER SIMON</h1>
         </div>
-        <button onClick={initGame}><START></START></button>
+        <button onClick={initGame}>START</button>
       </>
     }
     </>
