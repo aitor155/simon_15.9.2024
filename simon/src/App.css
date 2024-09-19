@@ -6,19 +6,42 @@
 }
 
 .container {
-  display: flex;
-  flex-wrap: wrap;
-  width: 600px;
-  height: 600px;
+  display: grid; /* Using grid for easier alignment of pads */
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  grid-template-rows: repeat(2, 1fr); /* 2 rows */
+  gap: 20px;
+  width: 400px; /* Width adjusted to fit 2x2 grid */
+  height: 400px; /* Same height as width */
   background-color: black;
   padding: 30px;
-  border-radius: 320px;
+  border-radius: 50%; /* Circular container */
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
 
 .center-container {
-  position: absolute;
-  border-radius: 300px;
+  position: relative; /* Avoids absolute overlapping */
+  width: 300px; /* Adjusted size */
+  height: 300px;
+  margin: 0 auto;
   background-color: black;
-  width: 600px;
-  height: 600px;
+  border-radius: 50%; /* Ensures it's fully circular */
+  z-index: 1; /* Prevents it from covering pads */
 }
+
+.pad {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  transition: opacity 0.3s, transform 0.3s;
+  opacity: 0.6; /* Initial opacity */
+}
+
+.pad:hover {
+  cursor: pointer;
+  opacity: 1;
+  transform: scale(0.95); /* Subtle scale effect on hover */
+}
+
+ 
